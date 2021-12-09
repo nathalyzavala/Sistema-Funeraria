@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9941d66-2b1d-41d9-9d42-dfdeafb79d5b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT c.nombrec, c.apellidoc, f.dui, f.nombref, f.telefonof, f.direccionf
+FROM cliente c
+INNER JOIN fiador f ON f.id_cliente = c.id_cliente]]>
+	</queryString>
+	<field name="nombrec" class="java.lang.String"/>
+	<field name="apellidoc" class="java.lang.String"/>
+	<field name="dui" class="java.lang.String"/>
+	<field name="nombref" class="java.lang.String"/>
+	<field name="telefonof" class="java.lang.String"/>
+	<field name="direccionf" class="java.lang.String"/>
+	<group name="clientes">
+		<groupExpression><![CDATA[$F{nombrec}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField>
+					<reportElement x="14" y="0" width="100" height="20" uuid="103b71f6-853f-4c51-baf2-21936b2c9c16"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombrec}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="113" y="0" width="100" height="20" uuid="efa3f1f9-f3b0-485e-a243-3cc502bf6fde"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{apellidoc}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="213" y="37" width="381" height="20" uuid="281861e8-2d7f-4fe1-bad0-2e13189c66c7"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="77" width="371" height="20" uuid="3e9bd89b-b8b0-4389-b985-aed0b954e770"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="381" height="37" uuid="c1b78e30-0078-4462-93fc-1170814c2c85"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="57" width="578" height="20" uuid="95dbfcf8-fa10-487a-bf01-f854d30a1f0a"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="632" y="0" width="170" height="97" uuid="320c6018-6801-43c2-a99a-9025cfc8c0af"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="20" uuid="7ed1da8b-d233-4e4a-8e2d-820865b229f6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Información de los clientes con sus fiadores"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="174" height="20" uuid="db811d17-ceac-4f8c-a680-296b724cfcfe"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre completo del cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="0" width="100" height="20" uuid="de641a07-2b92-4d50-95eb-5206c57f26a2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="0" width="100" height="20" uuid="0f94ee89-726b-4355-920f-b0194e30ffb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del fiador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="0" width="100" height="20" uuid="9d3204ad-bfa2-47d3-a77c-6751f4dbf586"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="612" y="0" width="100" height="20" uuid="89e0e5fd-9cfb-4fe6-8a29-1212ba871182"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="241" y="1" width="100" height="20" uuid="59696c76-8995-4560-a382-3bd232028f99"/>
+				<textFieldExpression><![CDATA[$F{dui}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="1" width="100" height="20" uuid="ed1b890f-bb09-44ea-973c-3adef0ea218d"/>
+				<textFieldExpression><![CDATA[$F{nombref}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="0" width="100" height="20" uuid="af1420b5-d0d1-467c-a48c-16bb84a05202"/>
+				<textFieldExpression><![CDATA[$F{telefonof}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="612" y="1" width="190" height="56" uuid="91bd5c98-103b-42ee-84e6-abad552e9106"/>
+				<textFieldExpression><![CDATA[$F{direccionf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="666" y="0" width="80" height="20" uuid="a0fb8f99-3437-40aa-9574-d55dac6c6183"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="746" y="0" width="40" height="20" uuid="7bb485a1-82e3-4fab-b5b7-6b44c7c3f0a4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="13" y="0" width="100" height="20" uuid="874d37cb-b2a1-45dd-b523-05af4a604baf"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="353" y="0" width="100" height="20" uuid="bc8f6f78-0227-41d2-a936-825386ea7a3b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

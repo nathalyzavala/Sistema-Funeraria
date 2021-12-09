@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a6a101a0-2e2b-44e9-a283-7cec9042fa56">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+"public".cliente.duic,
+CONCAT("public".cliente.nombrec,'  ',"public".cliente.apellidoc),
+"public".cliente.telefono,
+"public".cliente.direccionc
+
+FROM
+"public".encabezado_venta_servicio
+INNER JOIN "public".detalle_venta ON "public".detalle_venta.id_encabezadoventa = "public".encabezado_venta_servicio.id_ventaservicio
+INNER JOIN "public".cliente ON "public".encabezado_venta_servicio.id_clientev = "public".cliente.id_cliente
+WHERE
+"public".detalle_venta.cantidad_cuotas = 0]]>
+	</queryString>
+	<field name="duic" class="java.lang.String"/>
+	<field name="concat" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="direccionc" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="220" y="2" width="381" height="37" uuid="f167ea0a-c100-430d-9ba5-264d6249b7a8"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="59" width="578" height="20" uuid="7aad5854-b273-47fb-8561-1ace11266925"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="39" width="381" height="20" uuid="f926dfe3-ccc5-4a39-a24d-78882e9cbf6d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="79" width="802" height="20" uuid="0191ce4e-6dad-4195-90f1-e8445c179200"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<image>
+				<reportElement x="632" y="2" width="170" height="103" uuid="eb39f76b-ab80-4abb-b339-f7fd761239ac"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="10" width="497" height="20" uuid="fcefabcd-d608-4027-9b14-57173dfeff2a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Reporte de clientes que pagarón al contado"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="39" y="0" width="100" height="20" uuid="207038cd-5a18-47a3-9f41-b02461c41193"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="0" width="100" height="20" uuid="4e3de2dd-ba3c-460a-9193-66f54d3df767"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre completo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="0" width="100" height="20" uuid="18787111-d8cd-4334-a331-8b4e22fe78e2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="0" width="100" height="20" uuid="283153c2-892f-4433-8cb1-8d6f7970c833"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="39" y="0" width="100" height="20" uuid="b5f7a2f8-9b67-4768-8ee4-1704163ae72e"/>
+				<textFieldExpression><![CDATA[$F{duic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="0" width="100" height="20" uuid="4b34b3e9-2e6e-4e30-b24b-d0c8a2e48e3c"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="352" height="20" uuid="b8b4eabe-6fc8-4861-884c-37b8bd9c6224"/>
+				<textFieldExpression><![CDATA[$F{direccionc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="0" width="166" height="20" uuid="97e5316b-fa29-4f08-bb4a-e1f080ad5c56"/>
+				<textFieldExpression><![CDATA[$F{concat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="10" width="100" height="20" uuid="bf6a9f75-820f-4f04-88a4-2c3a7987bfd4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="676" y="0" width="80" height="20" uuid="56b26e61-7e97-41d9-b157-1a8b0b46155a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="756" y="0" width="40" height="20" uuid="32a535f3-45e2-4d9f-804e-861ceae02317"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="376" y="0" width="100" height="20" uuid="84e7af40-7c38-47c8-b181-01a49b861825"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

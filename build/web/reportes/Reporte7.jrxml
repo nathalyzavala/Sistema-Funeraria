@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="db3eccb2-06cb-4919-b0d4-7c7bfb9d3086">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT s.nombre_servicio "Nombre", COUNT(s.nombre_servicio) as "Cantidad", s.costo as "costo"
+FROM servicio s
+INNER JOIN detalle_venta d  ON s.id_servicio=d.id_serviciod
+GROUP BY  s.nombre_servicio, s.costo]]>
+	</queryString>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Cantidad" class="java.lang.Long"/>
+	<field name="costo" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="94" y="0" width="336" height="34" uuid="08669318-1429-4676-bdf0-28cccefe43d9"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="547" height="20" uuid="bcf46fc0-9b3b-4379-956d-3a24e567d6e2"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="57" width="449" height="20" uuid="b8a5e6cb-32fc-4e90-9361-305791b916b9"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="37" width="336" height="20" uuid="215f21d4-bd8c-411f-9974-72b4615048c2"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<image>
+				<reportElement x="447" y="0" width="108" height="77" uuid="09f84101-62cb-4948-9c35-a8fd036c5859"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="575ecd05-0e35-47a1-bbf4-4ba00db0f6ba"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA["Cantidad de servicios vendidos hasta la fecha"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="0" width="100" height="20" uuid="a260af95-5ce5-4ad3-8dd1-2b890d66c890"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="0" width="100" height="20" uuid="6ffea208-0814-4d64-8e3d-0c47770a7d8e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="413" y="0" width="100" height="20" uuid="a49c22c2-e243-441b-a330-596c949af7a4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement x="32" y="0" width="100" height="20" uuid="9df0f3d9-4c10-4414-90a0-11afdff711f0"/>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="100" height="20" uuid="cff974c2-d81a-4d23-93c0-db9e717e17c1"/>
+				<textFieldExpression><![CDATA[$F{Cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$">
+				<reportElement x="413" y="0" width="100" height="20" uuid="4100585b-f8cb-4a86-9d22-74d9aa632c56"/>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="432" y="0" width="80" height="20" uuid="30fced30-4fb5-4099-95e0-841d0e9e6be8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="512" y="0" width="40" height="20" uuid="6cfa3975-08ac-4465-85be-1effffe98d09"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="331f7a5e-208c-4b1b-b127-d4b366c2df34"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="227" y="0" width="100" height="20" uuid="f0bdfbee-2590-4524-b978-e869f1a32827"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="273" splitType="Stretch">
+			<bar3DChart>
+				<chart>
+					<reportElement x="0" y="100" width="555" height="173" uuid="6a100a42-34cf-45e0-8ea7-f401479545ea"/>
+					<chartTitle/>
+					<chartSubtitle color="#CCCC00">
+						<subtitleExpression><![CDATA["Servicios vendidos"]]></subtitleExpression>
+					</chartSubtitle>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Servicios vendidos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Nombre}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Cantidad}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisLabelExpression><![CDATA["Servicio"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Cantidad"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</summary>
+</jasperReport>

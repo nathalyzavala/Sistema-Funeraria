@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a7be799-aec0-4ccb-aa32-59de3fc6b837">
+	<property name="ireport.zoom" value="0.8264462809917357"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+c.duic,
+CONCAT(c.nombrec,'  ',c.apellidoc),
+c.telefono,
+c.direccionc,
+d.cantidad_cuotas,
+s.nombre_servicio
+FROM
+encabezado_venta_servicio e
+INNER JOIN detalle_venta d ON d.id_encabezadoventa = e.id_ventaservicio
+INNER JOIN cliente c ON e.id_clientev = c.id_cliente
+INNER JOIN servicio s ON d.id_serviciod = s.id_servicio
+WHERE
+d.cantidad_cuotas <> 0]]>
+	</queryString>
+	<field name="duic" class="java.lang.String"/>
+	<field name="concat" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="direccionc" class="java.lang.String"/>
+	<field name="cantidad_cuotas" class="java.lang.Integer"/>
+	<field name="nombre_servicio" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="211" y="0" width="381" height="35" uuid="8fe11e46-a32b-4ae5-b1ec-0ffd9386c5da"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="55" width="557" height="20" uuid="67198f71-324b-4cbf-8a10-d57d4cb75f26"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="35" width="360" height="20" uuid="93e6cda8-0a0d-4169-a12a-b3b2658683f6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="75" width="802" height="20" uuid="83f01567-ed07-4375-b107-74117122c59d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<image>
+				<reportElement x="632" y="0" width="160" height="75" uuid="d88b69b9-0dc1-4138-b0f7-381ca5e44997"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="0" width="791" height="20" uuid="a522d1cc-b708-43a3-b95a-fc2878a47c49"/>
+				<textElement textAlignment="Center">
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Reporte de clientes que pagaron por cuotas"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="99" y="0" width="100" height="20" uuid="6b91e4d3-9212-43ef-8da6-a7b3738eddd6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre completo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="0" width="74" height="20" uuid="da266a2e-1c8c-4485-9900-55a51ea6e515"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="100" height="20" uuid="6ac8e42d-2537-42e5-85c9-82e9643f6153"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="0" width="100" height="20" uuid="449e6f56-ca24-4ee3-b927-3145c0462030"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="566" y="0" width="100" height="20" uuid="3b0ac3b7-a784-473e-b448-2f989eb8d39a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="692" y="0" width="100" height="20" uuid="006d58cc-a077-46d6-8e2b-529448709c44"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cuotas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="73" height="20" uuid="be50cf22-fe61-4065-98f8-7b9eea5058e9"/>
+				<textFieldExpression><![CDATA[$F{duic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="100" height="20" uuid="59c737b0-8823-4bba-9f32-bcaaabefa3c6"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="0" width="161" height="20" uuid="29f6a098-ffe8-44c6-aa02-41a2c6273eb3"/>
+				<textFieldExpression><![CDATA[$F{direccionc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="566" y="0" width="100" height="20" uuid="fe5ea511-9b09-4f04-8dc6-f74820ddbeb1"/>
+				<textFieldExpression><![CDATA[$F{nombre_servicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="692" y="0" width="100" height="20" uuid="cc2eb14e-7b0b-4534-8eef-1dfe3b242bff"/>
+				<textFieldExpression><![CDATA[$F{cantidad_cuotas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="99" y="0" width="144" height="20" uuid="7fea3dc6-53c7-424a-b238-4c93a7e6fb70"/>
+				<textFieldExpression><![CDATA[$F{concat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="652" y="0" width="80" height="20" uuid="dca20fdb-308c-4bc2-a217-f936a63e47dd"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="732" y="0" width="40" height="20" uuid="ccd709ec-9cfa-46e4-bc36-bb944905ef7c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="29" y="0" width="100" height="20" uuid="f4af6268-a25c-4f37-bccd-1145b2951736"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="350" y="0" width="100" height="20" uuid="303b5e8e-8f81-47d1-add9-58d8962c5324"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

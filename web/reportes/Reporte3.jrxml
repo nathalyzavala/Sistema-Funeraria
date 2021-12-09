@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="146a5509-40c8-4708-9e89-d70ef9354c5a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+s.nombre_servicio,
+p.nombrep,
+p.preciop,
+d.cantidad
+FROM
+servicio s
+INNER JOIN detale_servicio d ON d.id_serviciod = s.id_servicio
+INNER JOIN producto p ON d.id_productod = p.id_producto]]>
+	</queryString>
+	<field name="nombre_servicio" class="java.lang.String"/>
+	<field name="nombrep" class="java.lang.String"/>
+	<field name="preciop" class="java.math.BigDecimal"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<variable name="nombre_servicio_1" class="java.lang.Integer" resetType="Group" resetGroup="grupo" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{nombre_servicio}]]></variableExpression>
+	</variable>
+	<variable name="preciop_1" class="java.math.BigDecimal" resetType="Group" resetGroup="grupo" calculation="Sum">
+		<variableExpression><![CDATA[$F{preciop}]]></variableExpression>
+	</variable>
+	<group name="grupo">
+		<groupExpression><![CDATA[$F{nombre_servicio}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="22" y="0" width="100" height="20" uuid="003a62e0-8909-4d02-944c-3ac4f6cee8f6"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre_servicio}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement x="439" y="0" width="100" height="20" uuid="5c4fe1b6-32cd-469b-9a8a-caaeb4c54634"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{preciop_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="302" y="0" width="100" height="20" uuid="d62687c0-cbfe-41ba-a86b-5e5e16e5880d"/>
+					<text><![CDATA[Precio total:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="86" y="15" width="344" height="32" uuid="e3a28d94-4f45-464d-9c35-ec4adc4cc383"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="47" width="344" height="20" uuid="f185f5e7-cdc9-4d33-9a77-8155b8e24085"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="87" width="555" height="20" uuid="a95597ad-b891-4148-b17a-a48e55e1416a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="67" width="457" height="20" uuid="6c2e4dfb-efb1-4aed-8131-f413dfba0d51"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="440" y="-2" width="115" height="109" uuid="62e13223-ad0f-4882-a67d-578b2325d032"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="1a3de7cd-3b8c-4e7c-8015-0e0e1f6c4e72"/>
+				<textElement textAlignment="Center">
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Detalles del servicio"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="0" width="100" height="20" uuid="6bdcc585-e28a-498e-bdbd-9cc1cab2b733"/>
+				<text><![CDATA[Servicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="0" width="100" height="20" uuid="2e2f16fe-6e39-4537-9311-df1a562123ff"/>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="0" width="100" height="20" uuid="01f954c5-4f0c-4d9c-8410-c7574d36aa25"/>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="439" y="0" width="100" height="20" uuid="5e5806a6-340d-47be-99d8-e8366962e3fa"/>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="162" y="0" width="100" height="20" uuid="ea8f849c-6235-4760-a2cd-2568bb96bf58"/>
+				<textFieldExpression><![CDATA[$F{nombrep}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="0" width="100" height="20" uuid="74e24a48-7313-4d66-b983-414185db002b"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="$0.00">
+				<reportElement x="440" y="6" width="100" height="20" uuid="a1ad3828-30fc-41eb-adc7-2dcc91c92db0"/>
+				<textFieldExpression><![CDATA[$F{preciop}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="420" y="0" width="80" height="20" uuid="a249ce1b-0c34-4163-826e-2e04f08c3fa0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="500" y="0" width="40" height="20" uuid="2f64158a-9e4b-43d9-92aa-304266b1a837"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="22" y="0" width="100" height="20" uuid="c491d53e-e41a-464b-b123-ecbaa96f62bd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="226" y="0" width="100" height="20" uuid="887a214e-cfa2-49e2-87a4-c8a4ba3970ad"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="604a8f94-8772-4da1-ab6a-4a5abf07f87b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+"public".empleado.nombree,
+"public".empleado.apellidoe,
+Count("public".encabezado_venta_servicio.id_empleadoe)
+FROM
+"public".empleado
+INNER JOIN "public".encabezado_venta_servicio ON "public".encabezado_venta_servicio.id_empleadoe = "public".empleado.id_empleado
+GROUP BY
+"public".encabezado_venta_servicio.id_empleadoe,
+"public".empleado.nombree,
+"public".empleado.apellidoe]]>
+	</queryString>
+	<field name="nombree" class="java.lang.String"/>
+	<field name="apellidoe" class="java.lang.String"/>
+	<field name="count" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="80" width="547" height="20" uuid="6b737554-61ce-41bc-817e-32c74e50496a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[tel: 2393-4567, 2393-55678]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="40" width="336" height="20" uuid="192da906-b3d8-4201-8a0c-4f7d311d1d46"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA["Siempre listos para proteger a tu familia"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="3" width="336" height="34" uuid="d97b55c6-4ccf-47bf-abfe-bdb7fd137843"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Funeraria La Esperanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="60" width="449" height="20" uuid="15be61af-c7e9-45c8-9bb4-41671d136006"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dirección: AV Raul Contreras  #15 Barrio San Juan de Dios ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="441" y="0" width="114" height="80" uuid="b9f0d861-4b45-4568-9c32-24a8a78e7920"/>
+				<imageExpression><![CDATA["../imagenes/logoReporte.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="0" width="381" height="20" uuid="2ffa1d51-391f-4029-87a4-7b168830da8e"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA["Empleados con mas servicios registrados"]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="43" y="0" width="100" height="20" uuid="2105915d-a835-44e2-a4d6-e89d35ef1fb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="100" height="20" uuid="68d53208-3fd5-493f-841a-789c6c9367eb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="2" width="100" height="20" uuid="17c7f441-6b6c-4ffe-a531-e3fff7684958"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de servicios]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="43" y="0" width="100" height="20" uuid="0502f01b-51d2-43d3-932e-96e44dfbb011"/>
+				<textFieldExpression><![CDATA[$F{nombree}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="100" height="20" uuid="e9776951-71e8-453d-ab32-12e9bc9fe070"/>
+				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="203" y="0" width="100" height="20" uuid="e26bbc6c-1949-473a-9538-6ffd8b307f47"/>
+				<textFieldExpression><![CDATA[$F{apellidoe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="30" y="0" width="100" height="20" uuid="74a0968d-f43a-416c-ae45-ffa713513605"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="0" width="80" height="20" uuid="cff3f24f-841b-41ab-a6b4-4c7419bf1791"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="505" y="0" width="40" height="20" uuid="cbbddbff-aced-45c0-ae07-b38d13897ac8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement x="228" y="0" width="100" height="20" uuid="63514542-dbe0-4b28-b0be-3151fc0d8fcf"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="246" splitType="Stretch">
+			<lineChart>
+				<chart>
+					<reportElement x="0" y="44" width="555" height="202" uuid="de8fc742-ac4c-4086-ac53-8d56c946fcbd"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Cantidad de servicios vendidos por empleado"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Empleados con más servicios vendidos"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{nombree}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{count}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisLabelExpression><![CDATA["Nombre del empleado"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Numero de servicios"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</summary>
+</jasperReport>
